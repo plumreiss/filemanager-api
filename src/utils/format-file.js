@@ -3,31 +3,35 @@ export const formatFile = (data) => {
 
   const rows = data.split("\n");
 
-  let newData = [];
+  let groupedObject = {};
 
   rows.forEach((row) => {
     const currentRow = row.split(",");
 
-    const numberValue = parseFloat(currentRow[2]);
-
-    const hexValue = currentRow[3];
+    const file = currentRow[0];
+    const text = currentRow[1];
+    const number = parseFloat(currentRow[2]);
+    const hex = currentRow[3];
 
     if (
-      !currentRow[0] ||
-      !currentRow[0] ||
-      isNaN(numberValue) ||
-      !/^([0-9A-Fa-f]{2}){16}$/.test(hexValue)
+      !file ||
+      typeof text !== "string" ||
+      isNaN(number) ||
+      !/^([0-9A-Fa-f]{2}){16}$/.test(hex)
     ) {
       return;
     }
 
-    newData.push({
-      file: currentRow[0],
-      text: currentRow[1],
-      number: numberValue,
-      hex: hexValue,
+    if (!groupedObject[file]) {
+      groupedObject[file] = { file, lines: [] };
+    }
+
+    groupedObject[file].lines.push({
+      text,
+      number,
+      hex,
     });
   });
 
-  return newData;
+  return Object.values(groupedObject);
 };
