@@ -16,3 +16,5 @@ const { PORT = 8000 } = process.env;
     process.exit(1);
   }
 })();
+
+export default server;
