@@ -90,5 +90,18 @@ describe("SERVER - API", () => {
           expect(res.body).to.be.eql([]);
         });
     });
+
+    it("should be able to return status 500 by external api error", () => {
+      mock.onGet(`${API}/v1/secret/files`).reply(500);
+      chai
+        .request(server.app)
+        .get("/api/v1/files/data")
+        .end((err, res) => {
+          expect(res).to.have.status(500);
+          expect(res.body).to.be.eql({
+            error: "Internal Server Error",
+          });
+        });
+    });
   });
 });
