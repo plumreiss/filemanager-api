@@ -11,6 +11,7 @@
     "transpile": "swc ./src --out-dir dist --copy-files --sync",
     "build": "npm-run-all clean transpile",
     "test": "mocha -r @swc/register",
+    "test:watch": "mocha -r @swc/register -w",
     "clean": "rm -rf dist",
     "watch:dev": "nodemon"
   },

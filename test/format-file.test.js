@@ -22,8 +22,13 @@ describe("format-file", () => {
     expect(input).to.eql(output);
   });
 
-  it("should be able to send empty array by empty data", () => {
+  it("should be able to return empty array by empty data", () => {
     const input = formatFile();
+    expect(input).to.eql([]);
+  });
+
+  it("should be able to return empty array if there is no correct data from the file", () => {
+    const input = formatFile("file,text,number,hex\ntest2.csv,krWfm");
     expect(input).to.eql([]);
   });
 });
