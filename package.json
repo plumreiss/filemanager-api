@@ -13,12 +13,19 @@
     "test": "mocha -r @swc/register",
     "test:watch": "mocha -r @swc/register -w",
     "clean": "rm -rf dist",
-    "watch:dev": "nodemon"
+    "watch:dev": "nodemon",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "nodemonConfig": {
     "exec": "yarn dev",
     "watch": [
       "src/*"
+    ]
+  },
+  "standard": {
+    "env": [
+      "mocha"
     ]
   },
   "dependencies": {
