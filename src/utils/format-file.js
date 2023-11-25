@@ -15,7 +15,7 @@ export const formatFile = (data) => {
 
     if (
       !file ||
-      !text ||
+      typeof text !== "string" ||
       isNaN(number) ||
       !/^([0-9A-Fa-f]{2}){16}$/.test(hex)
     ) {
