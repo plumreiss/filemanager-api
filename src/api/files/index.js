@@ -4,7 +4,7 @@ import { formatFile } from "../../utils/format-file";
 
 const router = Router();
 
-const API = "https://echo-serv.tbxnet.com";
+export const API = "https://echo-serv.tbxnet.com";
 
 axios.defaults.baseURL = API;
 axios.defaults.headers.common["Authorization"] = "Bearer aSuperSecretKey";
