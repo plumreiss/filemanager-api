@@ -9,7 +9,7 @@ const API = "https://echo-serv.tbxnet.com";
 axios.defaults.baseURL = API;
 axios.defaults.headers.common["Authorization"] = "Bearer aSuperSecretKey";
 
-router.get(`/files`, async (req, res) => {
+router.get(`/files/data`, async (req, res) => {
   try {
     const { data } = await axios.get(`/v1/secret/files`);
 
