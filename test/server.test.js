@@ -78,5 +78,17 @@ describe("SERVER - API", () => {
           ]);
         });
     });
+
+    it("should be able to return empty array if there is no data", () => {
+      mock.onGet(`${API}/v1/secret/files`).reply(200, {
+        files: [],
+      });
+      chai
+        .request(server.app)
+        .get("/api/v1/files/data")
+        .end((err, res) => {
+          expect(res.body).to.be.eql([]);
+        });
+    });
   });
 });
