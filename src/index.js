@@ -1,18 +1,20 @@
-import buildServer from './api'
+import buildServer from "./api";
 
-const server = { app: null }
+const server = { app: null };
 
-const { PORT = 8000 } = process.env(async () => {
+const { PORT = 8000 } = process.env;
+
+(async () => {
   try {
-    server.app = await buildServer()
+    server.app = await buildServer();
 
     await server.app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`)
-    })
+      console.log(`Server running on port ${PORT}`);
+    });
   } catch (err) {
-    console.error(err)
-    process.exit(1)
+    console.error(err);
+    process.exit(1);
   }
-})()
+})();
 
-export default server
+export default server;
