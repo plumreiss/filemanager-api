@@ -21,4 +21,9 @@ describe("format-file", () => {
 
     expect(input).to.eql(output);
   });
+
+  it("should be able to send empty array by empty data", () => {
+    const input = formatFile();
+    expect(input).to.eql([]);
+  });
 });
